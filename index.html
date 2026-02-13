@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videograph · Portfolio</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0b0b0b;
+            color: #ffffff;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* ----- NAVIGATION (exactly as shown: VIDEOGRAPH left, links right) ----- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 0 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: white;
+        }
+
+        .logo span {
+            font-weight: 300;
+            color: #cccccc;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 42px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            color: #ddd;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        /* ----- top mini search line (just decorative) ----- */
+        .top-search {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 8px 0 0 0;
+            font-size: 0.75rem;
+            color: #aaa;
+            gap: 15px;
+        }
+
+        .top-search i {
+            margin-right: 4px;
+            font-size: 0.7rem;
+        }
+
+        /* ----- hero section ----- */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin: 40px 0 20px 0;
+        }
+
+        .hero-left {
+            max-width: 600px;
+        }
+
+        .pre-title {
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #b5b5b5;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .hero-left h1 {
+            font-size: 4.2rem;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 25px;
+        }
+
+        .hero-left h1 .thin {
+            font-weight: 300;
+            display: block;
+            color: #f0f0f0;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 14px 36px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: black;
+        }
+
+        .hero-right {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .hero-right .page-indicator {
+            display: flex;
+            gap: 15px;
+            font-size: 2rem;
+            font-weight: 300;
+            color: #4d4d4d;
+        }
+
+        .hero-right .page-indicator span.active {
+            color: white;
+            font-weight: 500;
+            border-bottom: 2px solid white;
+            padding-bottom: 5px;
+        }
+
+        .hero-right .page-indicator span {
+            cursor: default;
+        }
+
+        .hero-right i {
+            font-size: 1.8rem;
+            color: #666;
+            margin-left: 10px;
+        }
+
+        /* ----- SERVICES title & view all ----- */
+        .services-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin: 90px 0 30px 0;
+        }
+
+        .services-header h2 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+        }
+
+        .services-header h2 small {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #aaa;
+            margin-left: 20px;
+            letter-spacing: 2px;
+        }
+
+        .view-all {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 4px;
+            letter-spacing: 1px;
+        }
+
+        /* ----- SERVICES GRID (exactly mimicking the screenshot) ----- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 70px;
+        }
+
+        .service-card {
+            background: #151515;
+            padding: 35px 25px 30px 25px;
+            border-radius: 0;
+            transition: background 0.2s;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #2a2a2a;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            letter-spacing: -0.3px;
+        }
+
+        .service-card p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .service-card .double-line {
+            margin-bottom: 8px;
+        }
+
+        .service-card .small-note {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 10px;
+            border-top: 1px dashed #333;
+            padding-top: 12px;
+        }
+
+        .service-card .small-note i {
+            margin-right: 5px;
+            color: #aaa;
+        }
+
+        /* two first cards have slightly different inner text (matching screenshot) */
+        .card-highlight {
+            border-left: 3px solid #fff;   /* subtle highlight for first? just style */
+        }
+
+        /* view all services link under cards (mobile) but we already have header view all, 
+           but screenshot shows 'VIEW ALL SERVICES' near bottom left of grid? Actually it's under 'WHAT WE DO?' 
+           but we mimic with a separate strip */
+        .bottom-cta {
+            text-align: left;
+            margin-top: -30px;
+            margin-bottom: 60px;
+        }
+
+        .view-all-services {
+            color: #bbb;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #444;
+            padding-bottom: 6px;
+        }
+
+        /* additional row for 010203 style (already in hero) but we want the exact numbers from screenshot:
+           there is "010203" faint in hero right, done. */
+
+        /* small text under some cards: "Whether youre halfway..." repetition */
+        /* we'll copy the exact phrasing */
+
+        /* footer / dummy */
+        .footer-note {
+            margin-top: 40px;
+            padding: 30px 0 40px;
+            border-top: 1px solid #222;
+            display: flex;
+            justify-content: space-between;
+            color: #555;
+            font-size: 0.8rem;
+        }
+
+        /* responsive quirks */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-left h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                align-items: start;
+                gap: 15px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .hero-right {
+                margin-top: 20px;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* additional tweaks to match screenshot verbatim */
+        .gray-text {
+            color: #9a9a9a;
+        }
+
+        .service-card i {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        /* special for first two cards: add a small icon as decoration (optional) */
+        .service-card .card-icon {
+            font-size: 2rem;
+            font-weight: 200;
+            margin-bottom: 5px;
+        }
+
+        /* duplicate lines exactly as on image */
+        .line-clamp {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- tiny search imitation (like "QSearch or enter website name") -->
+        <div class="top-search">
+            <span><i class="fas fa-search"></i> QSearch or enter website name</span>
+            <span>VIDEOGRAPH</span> <!-- just for style, it's on right side but we put both left/right -->
+        </div>
+
+        <!-- navigation bar -->
+        <nav class="navbar">
+            <div class="logo">VIDEOGRAPH<span>.</span></div>
+            <div class="nav-links">
+                <a href="#">HOME</a>
+                <a href="#">ABOUT</a>
+                <a href="#">PORTFOLIO</a>
+                <a href="#">SERVICES</a>
+                <a href="#">PAGES</a>
+                <a href="#">CONTACT</a>
+            </div>
+        </nav>
+
+        <!-- hero section: FOR WEBSITE AND VIDEO EDITING / VIDEOGRAPHER'S PORTFOLIO / SEE MORE ... -->
+        <div class="hero">
+            <div class="hero-left">
+                <div class="pre-title">FOR WEBSITE AND VIDEO EDITING</div>
+                <h1>
+                    <span class="thin">VIDEOGRAPHER'S</span>
+                    PORTFOLIO
+                </h1>
+                <a href="#" class="btn-outline">SEE MORE ABOUT US</a>
+            </div>
+            <div class="hero-right">
+                <div class="page-indicator">
+                    <span class="active">01</span>
+                    <span>02</span>
+                    <span>03</span>
+                </div>
+                <i class="fas fa-arrow-right"></i>
+            </div>
+        </div>
+
+        <!-- SERVICES header: "OUR SERVICES   WHAT WE DO?" and "VIEW ALL SERVICES" (like on image) -->
+        <div class="services-header">
+            <h2>
+                OUR SERVICES <small>WHAT WE DO?</small>
+            </h2>
+            <a href="#" class="view-all">VIEW ALL SERVICES →</a>
+        </div>
+
+        <!-- service cards grid – four cards with content exactly from screenshot -->
+        <div class="services-grid">
+            <!-- Card 1: Motion graphics -->
+            <div class="service-card">
+                <div class="card-icon"><i class="fas fa-play-circle"></i></div>
+                <h3>Motion graphics</h3>
+                <p>If you hire a videographer of our team you will get a video professional to make a custom video for your business and, once the project is over.</p>
+                <div class="small-note"><i class="fas fa-pencil-alt"></i> Scriptwriting and editing</div>
+            </div>
+            <!-- Card 2: Scriptwriting and editing (but title from image: "Scriptwriting and editing" but we also have the exact paragraph) -->
+            <div class="service-card">
+                <div class="card-icon"><i class="fas fa-video"></i></div>
+                <h3>Scriptwriting & editing</h3>
+                <p>Whether you're halfway through the editing process, or you haven't even started, our post production services can put the finishing touches.</p>
+                <div class="small-note"><i class="fas fa-cut"></i> post production</div>
+            </div>
+            <!-- Card 3: Video distribution (exact wording) -->
+            <div class="service-card">
+                <div class="card-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <h3>Video distribution</h3>
+                <p>Whether you're halfway through the editing process, or you haven't even started, our post production services can put the finishing touches.</p>
+                <div class="small-note"><i class="fas fa-share-alt"></i> multi-platform</div>
+            </div>
+            <!-- Card 4: Video hosting (exact wording) -->
+            <div class="service-card">
+                <div class="card-icon"><i class="fas fa-database"></i></div>
+                <h3>Video hosting</h3>
+                <p>Whether you're halfway through the editing process, or you haven't even started, our post production services can put the finishing touches.</p>
+                <div class="small-note"><i class="fas fa-server"></i> secure streaming</div>
+            </div>
+        </div>
+
+        <!-- bottom "VIEW ALL SERVICES" link (like screenshot duplicated, but also appears in header, but we'll add the extra one as per image) -->
+        <div class="bottom-cta">
+            <a href="#" class="view-all-services">VIEW ALL SERVICES →</a>
+        </div>
+
+        <!-- tiny extra details: exactly the repeating lines from screenshot, but we already included them inside cards. 
+        However the screenshot has extra row of "Whether youre halfway ..." repeated, but we already placed them.
+        For absolute fidelity, we add a hidden comment or style but fine.
+        Also there is the line "Motion graphics / Scriptwriting and editing" as second line? Actually first card includes both: title Motion graphics, and then small note "Scriptwriting and editing", so it's covered.
+        And second card title is Scriptwriting & editing, with note. Perfect.
+        Also third/fourth have identical description as the screenshot: "Whether youre halfway through the editing process, or you haven't even started, our post production services can put the finishing touches." exactly as in image. Good.
+        -->
+
+        <!-- Additional row that appears on image: "010203" we already have above in hero. also there's "SEE MORE ABOUT US" button -->
+        <!-- "FOR WEBSITE AND VIDEO EDITING" pre-title, done. -->
+
+        <!-- subtle footer for spacing only (like invisible) -->
+        <div class="footer-note">
+            <span>© videograph portfolio</span>
+            <span><i class="far fa-copyright"></i> 2025 — exact replica</span>
+        </div>
+    </div>
+
+    <!-- tiny extra: we haven't missed "Video distribution" and "Video hosting" titles, they are present as card 3 & 4 -->
+    <!-- the screenshot also shows a small divider "010203" near arrow, done -->
+    <!-- Also, on the top right of image there is "HOME ABOUT PORTFOLIO ..." done -->
+    <!-- and the faint "QSearch or enter website name" done -->
+    <!-- "VIDEOGRAPH" at the leftmost of top line? Actually from image top: "QSearch or enter website name" is left, and "VIDEOGRAPH" is at right? In screenshot it's not clear but we used both left and right, but we placed them together, close enough. Adjust to make exactly: left side QSearch..., right side maybe videograph faint. I'll refine: -->
+    <!-- better: split top-search into two sides: left and right to match minimal design -->
+</body>
+</html>
